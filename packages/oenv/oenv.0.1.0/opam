@@ -1,0 +1,44 @@
+opam-version: "2.0"
+synopsis: "A composable environment variable reader"
+description:
+  "oenv is a library for reading environment variables in a composable way, with support for default values, required variables, custom types, and logging via logs."
+maintainer: ["Nymphium <s1311350@gmail.com>"]
+authors: ["Nymphium <s1311350@gmail.com>"]
+license: "MIT"
+homepage: "https://github.com/Nymphium/oenv"
+doc: "https://nymphium.github.io/oenv"
+bug-reports: "https://github.com/Nymphium/oenv/issues"
+depends: [
+  "ocaml" {>= "5.2"}
+  "dune" {>= "3.18" & >= "3.18"}
+  "logs"
+  "ppx_deriving"
+  "alcotest" {with-test}
+  "eio_main" {with-test}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/Nymphium/oenv.git"
+x-maintenance-intent: ["(latest)"]
+url {
+  src:
+    "https://github.com/Nymphium/oenv/releases/download/0.1.0/oenv-0.1.0.tbz"
+  checksum: [
+    "sha256=70e3c463d5b352eb50441d376fc2674cdff8e6444f5a1dad47d236a123e6175e"
+    "sha512=f051aa9e6db00a6e2df8de80b9c1559b9044df9c74fe342b316ddcf9392e25861baf34dccd7ee3f6bed5fd4611bf55c161bc584e3fca06461392c349f59f2747"
+  ]
+}
+x-commit-hash: "3e928857c2052c5a9f7a3b7bf9261453ce937b72"
